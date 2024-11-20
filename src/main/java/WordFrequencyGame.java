@@ -3,6 +3,7 @@ import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
     public static final String SPACE_REGEX = "\\s+";
+    public static final String SPACE = " ";
 
     public String getWordFrequency(String sentence) {
         if (sentence.split(SPACE_REGEX).length == 1) {
@@ -23,7 +24,7 @@ public class WordFrequencyGame {
 
     private static String joinResult(List<WordFrequency> wordFrequencies) {
         return wordFrequencies.stream()
-                .map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount())
+                .map(wordFrequency -> wordFrequency.getWord() + SPACE + wordFrequency.getWordCount())
                 .collect(Collectors.joining("\n"));
     }
 
