@@ -20,6 +20,7 @@ public class WordFrequencyGame {
             }
         }
     }
+
     private static String joinResult(List<WordFrequency> wordFrequencies) {
         StringJoiner joiner = new StringJoiner("\n");
 
@@ -29,6 +30,7 @@ public class WordFrequencyGame {
 
         return joiner.toString();
     }
+
     private List<WordFrequency> getWordFrequencies(List<WordFrequency> wordFrequencies) {
         //get the map for the next step of sizing the same word
         Map<String, List<WordFrequency>> wordToFrequency = getFrequencyMap(wordFrequencies);
@@ -40,6 +42,7 @@ public class WordFrequencyGame {
 
         return wordFrequencies;
     }
+
     private static List<WordFrequency> getInitialWordFrequencies(String sentence) {
         //split the input string with 1 to n pieces of spaces
         String[] words = sentence.split(SPACE_REGEX);
@@ -54,12 +57,8 @@ public class WordFrequencyGame {
     }
 
     private Map<String, List<WordFrequency>> getFrequencyMap(List<WordFrequency> wordFrequencies) {
-        Map<String, List<WordFrequency>> wordToFrequency = new HashMap<>();
-        for (WordFrequency wordFrequency : wordFrequencies) {
-            wordToFrequency.computeIfAbsent(wordFrequency.getWord(), k -> new ArrayList<>()).add(wordFrequency);
-        }
-
-        return wordToFrequency;
+        return wordFrequencies.stream()
+                .collect(Collectors.groupingBy(WordFrequency::getWord));
     }
 
 }
