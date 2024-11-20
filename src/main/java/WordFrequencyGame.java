@@ -5,18 +5,15 @@ public class WordFrequencyGame {
     public static final String SPACE_REGEX = "\\s+";
 
     public String getWordFrequency(String sentence) {
-        List<WordFrequency> wordList = countWordFrequencies(sentence);
-        return wordList.stream()
-                .sorted(Comparator.comparingInt(WordFrequency::getCount).reversed())
-                .map(WordFrequency::toString)
+        Map<String, Long> wordCountMap = countWordFrequencies(sentence);
+        return wordCountMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .map(entry -> new WordFrequency(entry.getKey(), entry.getValue().intValue()).toString())
                 .collect(Collectors.joining("\n"));
     }
 
-    public List<WordFrequency> countWordFrequencies(String sentence) {
-        List<String> words = Arrays.asList(sentence.split(SPACE_REGEX));
-        HashSet<String> uniqueWords = new HashSet<>(words);
-        return uniqueWords.stream()
-                .map(word -> new WordFrequency(word, Collections.frequency(words, word)))
-                .collect(Collectors.toList());
+    public Map<String, Long> countWordFrequencies(String sentence) {
+        return Arrays.stream(sentence.split(SPACE_REGEX))
+                .collect(Collectors.groupingBy(word -> word, Collectors.counting()));
     }
 }
