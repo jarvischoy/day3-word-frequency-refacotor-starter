@@ -24,7 +24,6 @@ public class WordFrequencyGame {
     }
 
     private List<WordFrequency> getWordFrequencies(List<WordFrequency> wordFrequencies) {
-        //get the map for the next step of sizing the same word
         Map<String, List<WordFrequency>> wordToFrequency = getFrequencyMap(wordFrequencies);
 
         wordFrequencies = wordToFrequency.entrySet().stream()
@@ -36,7 +35,6 @@ public class WordFrequencyGame {
     }
 
     private static List<WordFrequency> getInitialWordFrequencies(String sentence) {
-        //split the input string with 1 to n pieces of spaces
         String[] words = sentence.split(SPACE_REGEX);
 
         List<WordFrequency> wordFrequencies = new ArrayList<>();
