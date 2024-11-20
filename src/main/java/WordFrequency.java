@@ -14,6 +14,4 @@ public class WordFrequency {
     public String toString() {
         return this.word + " " + this.count;
     }
-
-
 }
