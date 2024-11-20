@@ -51,4 +51,12 @@ public class WordFrequencyGame {
                 .collect(Collectors.groupingBy(WordFrequency::getWord));
     }
 
+
+    public List<WordFrequency> countWordFrequencies(String sentence) {
+        List<String> words = Arrays.asList(sentence.split(SPACE_REGEX));
+        HashSet<String> wordSet = new HashSet<>(words);
+        return wordSet.stream()
+                .map(word -> new WordFrequency(word, Collections.frequency(words, word)))
+                .collect(Collectors.toList());
+    }
 }
