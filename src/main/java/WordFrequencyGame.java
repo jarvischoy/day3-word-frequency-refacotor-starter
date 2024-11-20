@@ -7,17 +7,17 @@ public class WordFrequencyGame {
     public String getWordFrequency(String sentence) {
         if (sentence.split(SPACE_REGEX).length == 1) {
             return sentence + " 1";
-        } else {
-            try {
-                List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
+        }
 
-                wordFrequencies = getWordFrequencies(wordFrequencies);
+        try {
+            List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
 
-                return joinResult(wordFrequencies);
-            } catch (Exception e) {
+            wordFrequencies = getWordFrequencies(wordFrequencies);
 
-                return "Calculate Error";
-            }
+            return joinResult(wordFrequencies);
+        } catch (Exception e) {
+
+            return "Calculate Error";
         }
     }
 
