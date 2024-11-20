@@ -7,11 +7,7 @@ public class WordFrequency {
         this.count = count;
     }
 
-    public String getWord() {
-        return this.word;
-    }
-
-    public int getWordCount() {
+    public int getCount() {
         return this.count;
     }
 
