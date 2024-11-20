@@ -10,16 +10,11 @@ public class WordFrequencyGame {
             return sentence + " 1";
         }
 
-        try {
-            List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
+        List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
 
-            wordFrequencies = getWordFrequencies(wordFrequencies);
+        wordFrequencies = getWordFrequencies(wordFrequencies);
 
-            return joinResult(wordFrequencies);
-        } catch (Exception e) {
-
-            return "Calculate Error";
-        }
+        return joinResult(wordFrequencies);
     }
 
     private static String joinResult(List<WordFrequency> wordFrequencies) {
